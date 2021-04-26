@@ -1,0 +1,108 @@
+<%- contentFor('HeaderCss') %>
+<!-- DataTables -->
+<link href="public/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+<link href="public/assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+
+<!-- Responsive datatable examples -->
+<link href="public/assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+
+    <%- contentFor('breadcrumb') %>
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                    <h4 class="mb-sm-0 font-size-18">PERSONEL LİSTESİ</h4>
+
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Personeller</a></li>
+                            <li class="breadcrumb-item active">Liste</li>
+                        </ol>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+<%- contentFor('body') %>
+
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <h4 class="card-title"></h4>
+                <p class="card-title-desc">
+
+                <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap w-100">
+                    <thead>
+                    <tr>
+                        <th>Personel</th>
+                        <th>Bölüm</th>
+                        <th>Pozisyon</th>
+                        <th>Yöneticiler</th>
+                        <th>Durum</th>
+                        
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                       
+                        <%if (records.length > 0){ %>
+                            <% records.forEach(function(row){ %>
+                            <tr>
+                                <td><%= row.isim %></td>
+                                <td><%= row.bolum %></td>
+                                <td><%= row.pozisyon %></td>
+                                <td>Yönetici</td>
+                                <%if (row.durum == true){ %>
+                                    <td>Aktif</td>
+                                <% }else{ %> 
+                                    <td>Pasif</td>    
+                                <% } %>
+                            </tr>
+                        <% })}else{ %>
+                            <tr>
+                                <td colspan="6">No Record Found</td> 
+                            </tr>
+                        <% } %>
+                 
+                
+                     
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div> <!-- end col -->
+</div> <!-- end row -->
+
+
+<%- contentFor('FooterJs') %>
+    <!-- apexcharts -->
+                <script src="public/assets/libs/apexcharts/apexcharts.min.js"></script>
+
+                <!-- dashboard init -->
+                <script src="public/assets/js/pages/dashboard.init.js"></script>
+
+<!-- Required datatable js -->
+<script src="public/assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="public/assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+<!-- Buttons examples -->
+<script src="public/assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+<script src="public/assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
+<script src="public/assets/libs/jszip/jszip.min.js"></script>
+<script src="public/assets/libs/pdfmake/build/pdfmake.min.js"></script>
+<script src="public/assets/libs/pdfmake/build/vfs_fonts.js"></script>
+<script src="public/assets/libs/datatables.net-buttons/js/buttons.html5.min.js"></script>
+<script src="public/assets/libs/datatables.net-buttons/js/buttons.print.min.js"></script>
+<script src="public/assets/libs/datatables.net-buttons/js/buttons.colVis.min.js"></script>
+
+<!-- Responsive examples -->
+<script src="public/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<script src="public/assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+
+<!-- Datatable init js -->
+<script src="public/assets/js/pages/datatables.init.js"></script>
+
+<%- contentFor('BottomJs') %>

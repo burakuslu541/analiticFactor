@@ -1,0 +1,250 @@
+<%- contentFor('HeaderCss') %>
+<!-- DataTables -->
+<link href="public/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+<link href="public/assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+
+<!-- Responsive datatable examples -->
+<link href="public/assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+
+    <%- contentFor('breadcrumb') %>
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                    <h4 class="mb-sm-0 font-size-18">TANIMLAMALAR</h4>
+
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboards</a></li>
+                            <li class="breadcrumb-item active">Dashboard</li>
+                        </ol>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <%- contentFor('body') %>
+           
+
+
+
+
+
+
+
+
+ <div class="row">
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title mb-4">ÇALIŞMA SAATLERİNİ EKLE</h4>
+
+                <form action="/createTanimlamaSure" method="POST">
+
+                    <div class="row">
+                   &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <div class="col-md-3">
+                            <div class="mb-3">
+                                <label for="gunluk" class="form-label">Günlük Çalışma</label>
+                                <input type="text" class="form-control" id="gunluk" name="gunluk">
+                            </div>
+                        </div>
+                         <div class="col-md-3">
+                            <div class="mb-3">
+                                <label for="haftalik" class="form-label">Haftalık Çalışma</label>
+                                <input type="text" class="form-control" id="haftalik" name="haftalik">
+                            </div>
+                        </div>
+                         <div class="col-md-3">
+                            <div class="mb-3">
+                                <label for="aylik" class="form-label">Aylık Çalışma</label>
+                                <input type="text" class="form-control" id="aylik" name="aylik">
+                            </div>
+                        </div>
+                     
+                        <div class="col-md-2">
+                 <div class="mb-3">
+                 <label for="gonder" class="form-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+
+                        <button id="gonder" type="submit" class="btn btn-primary w-md">Ekle</button>
+
+
+                        
+                    </div>  </div>
+<div class="row">
+
+<div class="col-2"></div>
+<div class="col-8">
+                    <div class="table-responsive">
+                    <table class="table table-bordered mb-0">
+
+                        <thead>
+                            <tr>
+                              
+                                <th>Günlük Çalışma</th>
+                                <th>Haftalık Çalışma</th>
+                                <th>Aylık Çalışma</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <%if (records.length > 0){ %>
+                                <% records.forEach(function(row){ %>
+                                <tr>
+                                    <td><%= row.gunluk %></td>
+                                    <td><%= row.haftalik %></td>
+                                    <td><%= row.aylik %></td>
+                                    
+                                </tr>
+                            <% })}else{ %>
+                                <tr>
+                                    <td colspan="6">No Record Found</td> 
+                                </tr>
+                            <% } %>
+            
+                        </tbody>
+                    </table>
+                </div>
+
+                 </div>  
+                 <div class="col-2"></div>
+                    </div>
+ </div>
+             
+                </form>
+            </div>
+            <!-- end card body -->
+        </div>
+        <!-- end card -->
+    </div>
+    <!-- end col -->
+
+ </div>
+
+
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title mb-4"> PERSONEL EKLE</h4>
+
+                <form action="/createTanimlamaPersonel" method="POST">
+
+                    <div class="row">
+                                         &nbsp;   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                        <div class="col-md-3">
+                            <div class="mb-3">
+                                <label for="isim" class="form-label">İsim</label>
+                                <input type="text" class="form-control" id="isim" name="isim">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="mb-3">
+                                <label for="soyisim" class="form-label">Soyisim</label>
+                                <input type="text" class="form-control" id="soyisim" name="soyisim">
+                            </div>
+                        </div>
+                         <div class="col-md-3">
+                            <div class="mb-3">
+                                <label for="sicilno" class="form-label">Sicil Numarası</label>
+                                <input type="text" class="form-control" id="sicilno" name="sicilno">
+                            </div>
+                        </div>
+                     
+                  
+                            
+                        <div class="col-md-2">
+                 <div class="mb-3">
+                 <label for="gonder" class="form-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+
+                        <button id="gonder" type="submit" class="btn btn-primary w-md">Ekle</button>
+                    </div>  </div>
+                    </div>
+
+             
+                </form>
+            </div>
+            <!-- end card body -->
+        </div>
+        <!-- end card -->
+    </div>
+    <!-- end col -->
+
+ </div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <h4 class="card-title"></h4>
+                <p class="card-title-desc">
+
+                <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap w-100">
+                    <thead>
+                    <tr>
+                        <th>İsim</th>
+                        <th>Soyisim</th>
+                        <th>Sicil No</th>
+
+                     
+                        
+                    </tr>
+                    </thead>
+
+
+                    <tbody>
+                        <%if (records.length > 0){ %>
+                            <% records.forEach(function(row){ %>
+                            <tr>
+                                <td><%= row.gunlu %></td>
+                                <td><%= row.haftalik %></td>
+                                <td><%= row.aylik %></td>
+                                
+                            </tr>
+                        <% })}else{ %>
+                            <tr>
+                                <td colspan="6">No Record Found</td> 
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div> <!-- end col -->
+</div> <!-- end row -->
+
+
+
+
+
+
+
+
+            <%- contentFor('FooterJs') %>
+                <!-- apexcharts -->
+                <script src="public/assets/libs/apexcharts/apexcharts.min.js"></script>
+
+                <!-- dashboard init -->
+                <script src="public/assets/js/pages/dashboard.init.js"></script>
+
+<!-- Required datatable js -->
+<script src="public/assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="public/assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+<!-- Buttons examples -->
+<script src="public/assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+<script src="public/assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
+<script src="public/assets/libs/jszip/jszip.min.js"></script>
+<script src="public/assets/libs/pdfmake/build/pdfmake.min.js"></script>
+<script src="public/assets/libs/pdfmake/build/vfs_fonts.js"></script>
+<script src="public/assets/libs/datatables.net-buttons/js/buttons.html5.min.js"></script>
+<script src="public/assets/libs/datatables.net-buttons/js/buttons.print.min.js"></script>
+<script src="public/assets/libs/datatables.net-buttons/js/buttons.colVis.min.js"></script>
+
+<!-- Responsive examples -->
+<script src="public/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<script src="public/assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+
+<!-- Datatable init js -->
+<script src="public/assets/js/pages/datatables.init.js"></script>
+                <%- contentFor('BottomJs') %>

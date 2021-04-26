@@ -1,0 +1,192 @@
+<%- contentFor('HeaderCss') %>
+<!-- DataTables -->
+<link href="public/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+<link href="public/assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+
+<!-- Responsive datatable examples -->
+<link href="public/assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+
+<%- contentFor('breadcrumb') %>
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+            <h4 class="mb-sm-0 font-size-18">Personel Ekle</h4>
+
+            <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                    <div>
+                    <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#myModal">Personel Ekle</button>
+
+                    <!-- sample modal content -->
+                    <div id="myModal" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title mt-0" id="myModalLabel">PERSONEL EKLE</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+<form action="/createTargetPersonel" method="POST">
+
+                                <div class="modal-body">
+    <div class="row">
+    
+                <div class="col-6">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="isim" name="isim" placeholder="Enter Name" >
+                        <label for="isim">İsim</label>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="soyisim" name="soyisim" placeholder="Enter Name" >
+                        <label for="soyisim">Soyisim</label>
+                    </div> 
+                </div>
+
+    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="email" name="email" placeholder="Enter Name" >
+                        <label for="email">E-mail</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="sicilno" name="sicilno" placeholder="Enter Name" >
+                        <label for="sicilno">Sicil No</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="bolum" name="bolum" placeholder="Enter Name" >
+                        <label for="bolum">Bölüm</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="departman" name="departman" placeholder="Enter Name" >
+                        <label for="departman">Departman</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="pozisyon" name="pozisyon" placeholder="Enter Name" >
+                        <label for="pozisyon">Pozisyon</label>
+                    </div>
+
+                                  
+        </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Kapat</button>
+                                    <button type="submit" class="btn btn-primary waves-effect waves-light">Kaydet</button>
+                                </div>
+            </form>
+
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
+                </div> <!-- end preview-->
+                </ol>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<%- contentFor('body') %>
+
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <h4 class="card-title"></h4>
+                <p class="card-title-desc">
+
+                <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
+                    <thead>
+                    <tr>
+                        <th>Personel</th>
+                        <th>Bölüm</th>
+                        <th>Pozisyon</th>
+                        <th>Yöneticiler</th>
+                        <th>Durum</th>
+                        <th>Aktif / Pasif</th>
+                        
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                        <%if (records.length > 0){ %>
+                            <% records.forEach(function(row){ %>
+                            <tr>
+                                <td><%= row.isim %></td>
+                                <td><%= row.bolum %></td>
+                                <td><%= row.pozisyon %></td>
+                                <td>Yöneteci</td>
+                                <%if (row.durum == true){ %>
+                                    <td>Aktif</td>
+                                <% }else{ %> 
+                                    <td>Pasif</td>    
+                                <% } %>
+                                <td>
+                                    <form action="/updateDurum/<%= row._id %>" method="POST" class="row row-cols-lg-auto g-3 align-items-center">
+                                        <div class="col-12">
+                                            <label class="visually-hidden" for="durum">Preference</label>
+                                            <select class="form-select" id="durum" name="durum">
+                                                <option value="true">Aktif</option>
+                                                <option value="false">Pasif</option>   
+                                            </select>
+                                        </div>
+                                        <div class="col-12">
+                                            <button type="submit" class="btn btn-primary w-md">Kaydet</button>
+                                        </div>
+                                    </form>
+                                </td>
+                                
+                            </tr>
+                        <% })}else{ %>
+                            <tr>
+                                <td colspan="6">No Record Found</td> 
+                            </tr>
+                        <% } %>
+
+
+
+                            
+                 
+                
+                     
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div> <!-- end col -->
+</div> <!-- end row -->
+
+
+<%- contentFor('FooterJs') %>
+    <!-- apexcharts -->
+                <script src="public/assets/libs/apexcharts/apexcharts.min.js"></script>
+
+                <!-- dashboard init -->
+                <script src="public/assets/js/pages/dashboard.init.js"></script>
+
+<!-- Required datatable js -->
+<script src="public/assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="public/assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+<!-- Buttons examples -->
+<script src="public/assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+<script src="public/assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
+<script src="public/assets/libs/jszip/jszip.min.js"></script>
+<script src="public/assets/libs/pdfmake/build/pdfmake.min.js"></script>
+<script src="public/assets/libs/pdfmake/build/vfs_fonts.js"></script>
+<script src="public/assets/libs/datatables.net-buttons/js/buttons.html5.min.js"></script>
+<script src="public/assets/libs/datatables.net-buttons/js/buttons.print.min.js"></script>
+<script src="public/assets/libs/datatables.net-buttons/js/buttons.colVis.min.js"></script>
+
+<!-- Responsive examples -->
+<script src="public/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<script src="public/assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+
+<!-- Datatable init js -->
+<script src="public/assets/js/pages/datatables.init.js"></script>
+
+<%- contentFor('BottomJs') %>
